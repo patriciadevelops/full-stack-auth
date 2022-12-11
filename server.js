@@ -10,6 +10,8 @@ const logger = require("morgan");
 const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
 const postRoutes = require("./routes/posts");
+const { cloudinary_js_config } = require("./middleware/cloudinary");
+// const cloudinary = require("./middleware/cloudinary");
 
 //Use .env file in config folder
 // require("dotenv").config({ path: "./config/.env" });
@@ -20,6 +22,10 @@ require("./config/passport")(passport);
 
 //Connect To Database
 connectDB();
+
+//cloudinary
+// require("./middleware/cloudinary").config();
+
 
 //Using EJS for views
 app.set("view engine", "ejs");
@@ -63,3 +69,6 @@ app.use("/post", postRoutes);
 app.listen(process.env.PORT, () => {
   console.log("Server is running, you better catch it!");
 });
+
+
+
